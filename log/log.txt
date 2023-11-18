@@ -1,0 +1,4 @@
+2023-11-18 17:38:26 [INFO] Program started
+2023-11-18 17:38:26 [INFO] Program finished
+2023-11-18 17:39:39 [INFO] Program started
+2023-11-18 17:39:40 [INFO] Program finished
