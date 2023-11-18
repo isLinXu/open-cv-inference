@@ -12,7 +12,7 @@ YoloV5Detector::YoloV5Detector(bool is_cuda,std::string classes_path,std::string
           INPUT_HEIGHT(640.0),
           SCORE_THRESHOLD(0.2),
           NMS_THRESHOLD(0.4),
-          CONFIDENCE_THRESHOLD(0.4),
+          CONFIDENCE_THRESHOLD(0.65),
           is_cuda(is_cuda) {
     /**
      * @param is_cuda: use cuda or not
@@ -118,7 +118,7 @@ void YoloV5Detector::detect(cv::Mat &image, std::vector<Detection> &output, std:
     for (int i = 0; i < rows; ++i) {
         float confidence = data[4];
         if (confidence >= CONFIDENCE_THRESHOLD) {
-            std::cout << "confidence:" << confidence << std::endl;
+            // std::cout << "confidence:" << confidence << std::endl;
             float *classes_scores = data + 5;
             cv::Mat scores(1, className.size(), CV_32FC1, classes_scores);
             cv::Point class_id;
@@ -126,6 +126,7 @@ void YoloV5Detector::detect(cv::Mat &image, std::vector<Detection> &output, std:
             minMaxLoc(scores, 0, &max_class_score, 0, &class_id);
             if (max_class_score > SCORE_THRESHOLD) {
                 confidences.push_back(confidence);
+                // std::cout << "class_id.x:" << class_id.x << std::endl;
                 class_ids.push_back(class_id.x);
 
                 float x = data[0];
@@ -140,9 +141,7 @@ void YoloV5Detector::detect(cv::Mat &image, std::vector<Detection> &output, std:
             }
 
         }
-
         data += 85;
-
     }
 
     std::vector<int> nms_result;

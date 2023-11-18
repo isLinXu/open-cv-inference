@@ -11,6 +11,9 @@
 #include <string>
 #include <opencv2/opencv.hpp>
 
+using namespace cv;
+using namespace std;
+
 class YoloV5Detector {
 public:
     struct Detection {
@@ -32,7 +35,7 @@ public:
     void detect(cv::Mat &image, std::vector<Detection> &output, std::vector<std::string> &className);
 
     int infer(int argc, char **argv);
-
+    std::vector<std::string> class_list;
 private:
     const std::vector<cv::Scalar> colors;
     const float INPUT_WIDTH;
@@ -42,7 +45,7 @@ private:
     const float CONFIDENCE_THRESHOLD;
     bool is_cuda;
     cv::dnn::Net net;
-    std::vector<std::string> class_list;
+//    std::vector<std::string> class_list;
 };
 
 #endif //OPEN_CV_INFERENCE_YOLOV5_H
