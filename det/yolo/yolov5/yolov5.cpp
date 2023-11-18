@@ -12,7 +12,7 @@ YoloV5Detector::YoloV5Detector(bool is_cuda,std::string classes_path,std::string
           INPUT_HEIGHT(640.0),
           SCORE_THRESHOLD(0.2),
           NMS_THRESHOLD(0.4),
-          CONFIDENCE_THRESHOLD(0.65),
+          CONFIDENCE_THRESHOLD(0.4),
           is_cuda(is_cuda) {
     /**
      * @param is_cuda: use cuda or not
