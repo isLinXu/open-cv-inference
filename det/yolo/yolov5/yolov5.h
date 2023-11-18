@@ -6,10 +6,7 @@
 #define OPEN_CV_INFERENCE_YOLOV5_H
 
 #include <fstream>
-
-#include <opencv2/opencv.hpp>
-
-#include <fstream>
+#include <iostream>
 #include <vector>
 #include <string>
 #include <opencv2/opencv.hpp>
@@ -22,13 +19,13 @@ public:
         cv::Rect box;
     };
 
-    YoloV5Detector(bool is_cuda = false,
-                   std::string classes_path = "/Users/gatilin/CLionProjects/yolov5_onnx_dnn/c++/classes.txt",
-                   std::string model_path = "/Users/gatilin/CLionProjects/yolov5_onnx_dnn/c++/yolov5s.onnx");
+    YoloV5Detector(bool is_cuda,
+                   std::string classes_path,
+                   std::string model_path);
 
-    std::vector<std::string> load_class_list(std::string classes_path);
+    std::vector<std::string> load_class_list(const std::string& classes_path);
 
-    void load_net(std::string model_path = "/Users/gatilin/CLionProjects/yolov5_onnx_dnn/c++/yolov5s.onnx");
+    void load_net(std::string model_path);
 
     cv::Mat format_yolov5(const cv::Mat &source);
 
