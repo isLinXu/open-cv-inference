@@ -45,7 +45,6 @@ private:
     const float CONFIDENCE_THRESHOLD;
     bool is_cuda;
     cv::dnn::Net net;
-//    std::vector<std::string> class_list;
 };
 
 #endif //OPEN_CV_INFERENCE_YOLOV5_H
