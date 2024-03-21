@@ -4,7 +4,10 @@ project(open_cv_inference)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(open_cv_inference
-        main.cpp det/yolo/yolov5/yolov5.cpp)
+        main.cpp
+        det/yolo/yolov5/yolov5.cpp
+        det/yolo/yolov6/yolov6.cpp
+        )
 find_package( OpenCV REQUIRED )
 
 target_link_libraries(open_cv_inference ${OpenCV_LIBS} )

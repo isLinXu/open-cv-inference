@@ -54,7 +54,7 @@ int logger_test(){
 int yolov5_infer(std::string& image_path,
                  std::string& weights_path,
                  std::string& cls_name_path,
-                 std::string output_path,
+                 const std::string& output_path,
                  bool is_show){
     // Load image.
     Mat frame;
@@ -103,10 +103,10 @@ int yolov6_infer(
         std::string& image_path,
         std::string& weights_path,
         std::string& cls_name_path,
-        std::string output_path,
+        const std::string& output_path,
         bool is_show){
     // Put efficiency information.
-    YOLOv6 detector(weights_path, cls_name_path);
+    YOLOv6 yolov6(weights_path, cls_name_path);
 
     // Load image.
     Mat frame;
@@ -114,7 +114,7 @@ int yolov6_infer(
     Mat input_frame = frame.clone();
 
     // Perform detection.
-    Mat img = detector.detect(input_frame);
+    Mat img = yolov6.detect(input_frame);
 
     // Display the result.
     if(is_show!=false){
@@ -139,7 +139,7 @@ int main(int argc, char **argv) {
 //    bool is_show = false;
     bool is_show = true;
     // 设置路径
-    std::string image_path = "/Users/gatilin/CLionProjects/opencv-inference/images/person.jpg";
+    std::string image_path = "../images/person.jpg";
 //    std::string image_path = "/Users/gatilin/CLionProjects/opencv-inference/images/zidane.jpg";
 //    std::string classes_path = "/Users/gatilin/CLionProjects/opencv-inference/data/yolov5/classes.txt";
 //    std::string weights_path = "/Users/gatilin/CLionProjects/opencv-inference/weights/yolov5-6/yolov5n.onnx";
